@@ -8,7 +8,7 @@ https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
 https://www.python.org/downloads/
 
 ## nodejs
-https://www.jetbrains.com/toolbox-app/
+https://nodejs.org/en/download
 
 ## chrome
 https://www.google.com/chrome/
