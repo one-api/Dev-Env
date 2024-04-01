@@ -1,6 +1,9 @@
 ## jetbrains toolbox
 https://www.jetbrains.com/toolbox-app/
 
+## vscode
+windows https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user
+
 ## wsl 2 kernel 
 https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
 
