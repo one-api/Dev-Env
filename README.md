@@ -16,3 +16,6 @@ https://nodejs.org/en/download
 ## chrome
 https://www.google.com/chrome/
 https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise64.msi
+
+## wireshark
+https://www.wireshark.org/download.html
