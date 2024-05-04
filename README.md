@@ -13,6 +13,9 @@ https://www.python.org/downloads/
 ## nodejs
 https://nodejs.org/en/download
 
+## golang
+https://go.dev/dl/
+
 ## chrome
 https://www.google.com/chrome/
 https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise64.msi
