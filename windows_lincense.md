@@ -1,0 +1,5 @@
+## renew
+
+```
+slmgr -rearm 
+```
