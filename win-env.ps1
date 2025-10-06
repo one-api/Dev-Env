@@ -52,9 +52,10 @@ $softwareList = @(
 
 foreach ($app in $softwareList) {
     Write-Host "Installing $app ---------------------------------------------------" -ForegroundColor Yellow
-    winget install -e --id $app --silent --accept-package-agreements --accept-source-agreements --locale en-US
+    winget install -e --id $app --silent --accept-package-agreements --accept-source-agreements #--locale en-US # looks like this locale not working
 }
 
 Write-Host "All done!" -ForegroundColor Cyan
 Pause
+
 
