@@ -1,6 +1,16 @@
 # win10 style right click menu
 reg add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve
 
+# Stop and disable SysMain (Superfetch)
+Stop-Service -Name "SysMain" -Force
+Set-Service -Name "SysMain" -StartupType Disabled
+# Stop and disable Windows Search
+Stop-Service -Name "WSearch" -Force
+Set-Service -Name "WSearch" -StartupType Disabled
+Write-Output "SysMain and Windows Search services have been stopped and disabled."
+
+
+
 $env:HTTP_PROXY="http://127.0.0.1:1080"
 $env:HTTPS_PROXY="http://127.0.0.1:1080"
 
@@ -47,3 +57,4 @@ foreach ($app in $softwareList) {
 
 Write-Host "All done!" -ForegroundColor Cyan
 Pause
+
