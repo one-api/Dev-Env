@@ -3,11 +3,10 @@ reg add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\Inpr
 
 
 # Show Desktop icons: This PC, Network, User's Files, Control Panel
-$RegPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel"
-Set-ItemProperty -Path $RegPath -Name "{20D04FE0-3AEA-1069-A2D8-08002B30309D}" -Value 0   # This PC
-Set-ItemProperty -Path $RegPath -Name "{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}" -Value 0   # Network
-Set-ItemProperty -Path $RegPath -Name "{59031a47-3f72-44a7-89c5-5595fe6b30ee}" -Value 0   # User's Files
-Set-ItemProperty -Path $RegPath -Name "{5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}" -Value 0   # Control Panel
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel" /v "{20D04FE0-3AEA-1069-A2D8-08002B30309D}" /t REG_DWORD /d 0 /f # This PC
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel" /v "{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}" /t REG_DWORD /d 0 /f # Network
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel" /v "{59031a47-3f72-44a7-89c5-5595fe6b30ee}" /t REG_DWORD /d 0 /f # User's Files
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel" /v "{5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}" /t REG_DWORD /d 0 /f # Control Panel
 
 
 # set user contorl to never notify
@@ -28,6 +27,13 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v Sh
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Feeds" /v ShellFeedsTaskbarViewMode /t REG_DWORD /d 2 /f
 # only merge taskbar icon when full
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v TaskbarGlomLevel /t REG_DWORD /d 1 /f
+
+
+# for windows server
+reg add "HKLM\Software\Policies\Microsoft\Windows NT\Reliability" /v ShutdownReasonOn /t REG_DWORD /d 0 /f # Disable Shutdown Event Tracker
+reg add "HKLM\Software\Policies\Microsoft\Windows NT\Reliability" /v ShutdownReasonUI /t REG_DWORD /d 0 /f
+reg add "HKCU\Software\Microsoft\ServerManager" /v DoNotOpenServerManagerAtLogon /t REG_DWORD /d 1 /f # Disable Server Manager on startup
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System" /v DisableCAD /t REG_DWORD /d 1 /f #disable ctrl alt delete to unlock
 
 
 # Stop and disable SysMain (Superfetch)
@@ -69,9 +75,11 @@ $softwareList = @(
     "JetBrains.Toolbox",
     "Mobatek.MobaXterm",
     
-    "Postman.Postman"
-    
+    "Postman.Postman",
     # "Docker.DockerDesktop",
+    
+    "Canonical.Ubuntu.2404",
+    "Microsoft.AppInstaller"
 )
 
 foreach ($app in $softwareList) {
@@ -83,6 +91,7 @@ winget uninstall "Microsoft OneDrive"
 
 Write-Host "All done!" -ForegroundColor Cyan
 Pause
+
 
 
 
